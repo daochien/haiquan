@@ -1,12 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbvue/build/css/mdb.css';
 
 import router from './router/index.js';
 
-Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
 const app = new Vue({

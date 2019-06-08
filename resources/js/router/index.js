@@ -4,12 +4,18 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import Login from '../components/auth/Login.vue';
+import SignUp from '../components/auth/SignUp.vue';
 
 export const constantRoutes = [
     {
         path: '/login',
         name: 'login',
         component: Login
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: SignUp
     }
 ];
 

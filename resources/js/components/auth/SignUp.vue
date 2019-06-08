@@ -3,25 +3,21 @@
         <mdb-row class="justify-content-center">
             <mdb-col md="4">
                 <mdb-card>
-                    <div class="header pt-3 peach-gradient">
+                    <div class="header pt-3 blue-gradient">
                     <mdb-row class="d-flex justify-content-center">
-                        <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+                        <h3 class="white-text mb-3 pt-3 font-weight-bold">Sign up</h3>
                     </mdb-row>
                     </div>
                     <mdb-card-body class="mx-4 mt-4">
-                        <mdb-input label="Your email" type="text"/>
-                        <mdb-input label="Your password" type="password" containerClass="mb-0"/>
-                        <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
-                        <mdb-row class="d-flex align-items-center mb-4 mt-5">
-                            <mdb-col md="5" class="d-flex align-items-start">
-                            <div class="text-center">
-                                <mdb-btn color="grey" rounded type="button" class="z-depth-1a">Log in</mdb-btn>
+                        <div class="grey-text">
+                            <mdb-input label="Your name" icon="user" type="text"/>
+                            <mdb-input label="Your email" icon="envelope" type="email"/>
+                            <mdb-input label="Confirm your email" icon="exclamation-triangle" type="text"/>
+                            <mdb-input label="Your password" icon="lock" type="password"/>
                             </div>
-                            </mdb-col>
-                            <mdb-col md="7" class="d-flex justify-content-end">
-                                <p class="font-small grey-text mt-3">Don't have an account? <router-link :to="{name: 'signup'}" class="dark-grey-text ml-1 font-weight-bold"> Sign up</router-link></p>
-                            </mdb-col>
-                        </mdb-row>
+                            <div class="text-center">
+                            <mdb-btn color="primary">Register</mdb-btn>
+                        </div>
                     </mdb-card-body>
                 </mdb-card>
             </mdb-col>
