@@ -9,3 +9,17 @@ export function login(data)
         data: data
     });
 }
+
+export function getInfo() {
+    return request({
+      url: '/auth/user',
+      method: 'get',
+    });
+  }
+
+  export function logout() {
+    return request({
+      url: '/auth/logout',
+      method: 'post',
+    });
+  }
