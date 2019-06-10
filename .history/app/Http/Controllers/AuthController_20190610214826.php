@@ -63,6 +63,7 @@ class AuthController extends Controller
 
             if ($token = $this->guard()->attempt($credentials)) 
             {
+                return '123';
                 return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
             }
 

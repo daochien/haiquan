@@ -2,7 +2,8 @@ import { login, logout, getInfo } from '../../api/user';
 import { getToken, setToken, removeToken } from '../../utils/auth';
 import router, { resetRouter } from '../../router/index';
 import store from '../../store/index';
-
+import { resolve } from 'q';
+import { rejects } from 'assert';
 
 const state = {
     id: null,
@@ -61,13 +62,4 @@ const actions = {
             });
         });
     }
-};
-
-export default {
-    namespaced: true,
-    state,
-    getters,
-    mutations,
-    actions,
-  };
-
+}

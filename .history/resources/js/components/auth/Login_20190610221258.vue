@@ -1,31 +1,31 @@
 <template>
     <section class="form-gradient">
-        <div class="login-component">
-            <mdb-row class="justify-content-center">
-                <mdb-col class="col-md-5 col-lg-4 col-sm-8" >
-                    <mdb-card>
-                        <div class="header pt-3 peach-gradient">
-                        <mdb-row class="d-flex justify-content-center">
-                            <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+        <mdb-row class="justify-content-center">
+            <mdb-col class="col-md-5 col-lg-4 col-sm-8" >
+                <mdb-card>
+                    <div class="header pt-3 peach-gradient">
+                    <mdb-row class="d-flex justify-content-center">
+                        <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+                    </mdb-row>
+                    </div>
+                    <mdb-card-body class="mx-4 mt-4 .z-depth-2">
+                        <mdb-input label="Your email" v-model="form.email"/>
+                        <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="form.password"/>
+                        <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
+                        <mdb-row class="d-flex align-items-center mb-4 mt-5">
+                            <mdb-col md="5" class="d-flex align-items-start">
+                            <div class="text-center">
+                                <mdb-btn color="grey" rounded type="button" class="z-depth-1a" @click="SignIn" >Log in</mdb-btn>
+                            </div>
+                            </mdb-col>
+                            <mdb-col md="7" class="d-flex justify-content-end">
+                                <p class="font-small grey-text mt-3">Don't have an account? <a @click="SignUp" class="dark-grey-text ml-1 font-weight-bold"> Sign up</a></p>
+                            </mdb-col>
                         </mdb-row>
-                        </div>
-                        <mdb-card-body class="mx-4 mt-4">
-                            <mdb-input label="Your email" v-model="form.email"/>
-                            <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="form.password"/>
-                            <mdb-row class="d-flex align-items-center mb-4 mt-5">
-                                <mdb-col md="12" class="align-items-start">
-                                <div class="text-center">
-                                    <mdb-btn color="grey" rounded type="button" class="z-depth-1a" @click="SignIn">Log in</mdb-btn>
-                                </div>
-                                </mdb-col>
-                                
-                            </mdb-row>
-                        </mdb-card-body>
-                    </mdb-card>
-                </mdb-col>
-            </mdb-row>
-        </div>
-        
+                    </mdb-card-body>
+                </mdb-card>
+            </mdb-col>
+        </mdb-row>
     </section>
 </template>
 
@@ -123,7 +123,6 @@
     .card
     {
         /* max-width: 450px; */
-        background-color: rgba(229,228,255,.2);
-        box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)!important;
+        background-color: rgba(229,228,255,.2) ;
     }
 </style>

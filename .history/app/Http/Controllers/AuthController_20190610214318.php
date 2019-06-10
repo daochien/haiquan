@@ -60,7 +60,7 @@ class AuthController extends Controller
         try
         {
             $credentials = $request->only('email', 'password');
-
+            
             if ($token = $this->guard()->attempt($credentials)) 
             {
                 return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
