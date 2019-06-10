@@ -1,7 +1,7 @@
 <template>
     <section class="form-gradient">
         <mdb-row class="justify-content-center">
-            <mdb-col md="4">
+            <mdb-col class="col-md-5 col-lg-3 col-sm-8" >
                 <mdb-card>
                     <div class="header pt-3 peach-gradient">
                     <mdb-row class="d-flex justify-content-center">
@@ -9,17 +9,17 @@
                     </mdb-row>
                     </div>
                     <mdb-card-body class="mx-4 mt-4">
-                        <mdb-input label="Your email" type="text"/>
-                        <mdb-input label="Your password" type="password" containerClass="mb-0"/>
+                        <mdb-input label="Your email" v-model="form.email"/>
+                        <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="form.password"/>
                         <p class="font-small grey-text d-flex justify-content-end">Forgot <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Password?</a></p>
                         <mdb-row class="d-flex align-items-center mb-4 mt-5">
                             <mdb-col md="5" class="d-flex align-items-start">
                             <div class="text-center">
-                                <mdb-btn color="grey" rounded type="button" class="z-depth-1a">Log in</mdb-btn>
+                                <mdb-btn color="grey" rounded type="button" class="z-depth-1a" @click="SignIn" >Log in</mdb-btn>
                             </div>
                             </mdb-col>
                             <mdb-col md="7" class="d-flex justify-content-end">
-                                <p class="font-small grey-text mt-3">Don't have an account? <router-link :to="{name: 'signup'}" class="dark-grey-text ml-1 font-weight-bold"> Sign up</router-link></p>
+                                <p class="font-small grey-text mt-3">Don't have an account? <a @click="SignUp" class="dark-grey-text ml-1 font-weight-bold"> Sign up</a></p>
                             </mdb-col>
                         </mdb-row>
                     </mdb-card-body>
@@ -31,6 +31,7 @@
 
 <script>
   import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbInput, mdbBtn, mdbIcon } from 'mdbvue';
+  import { login } from '../../api/user.js';
   export default {
     name: 'FormsPage',
     components: {
@@ -41,6 +42,27 @@
       mdbInput,
       mdbBtn,
       mdbIcon
+    },
+
+    data() {
+        return {
+            form: {
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+
+        SignIn()
+        {
+            login(this.form);
+        },
+
+        SignUp()
+        {
+            this.$router.push({ name: 'signup' })
+        }
     }
   }
 </script>
