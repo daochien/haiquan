@@ -5,12 +5,22 @@ Vue.use(VueRouter);
 
 import Login from '../components/auth/Login.vue';
 import SignUp from '../components/auth/SignUp.vue';
+import App from '../layout/App.vue';
 
 export const constantRoutes = [
     {
+        path: '/',
+        name: 'app',
+        component: App,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+
     },
     {
         path: '/signup',

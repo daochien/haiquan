@@ -1,31 +1,28 @@
 <template>
     <section class="form-gradient">
-        <div class="login-component">
-            <mdb-row class="justify-content-center">
-                <mdb-col class="col-md-5 col-lg-4 col-sm-8" >
-                    <mdb-card>
-                        <div class="header pt-3 peach-gradient">
-                        <mdb-row class="d-flex justify-content-center">
-                            <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+        <mdb-row class="justify-content-center">
+            <mdb-col class="col-md-5 col-lg-4 col-sm-8" >
+                <mdb-card>
+                    <div class="header pt-3 peach-gradient">
+                    <mdb-row class="d-flex justify-content-center">
+                        <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+                    </mdb-row>
+                    </div>
+                    <mdb-card-body class="mx-4 mt-4">
+                        <mdb-input label="Your email" v-model="form.email"/>
+                        <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="form.password"/>
+                        <mdb-row class="d-flex align-items-center mb-4 mt-5">
+                            <mdb-col md="12" class="align-items-start">
+                            <div class="text-center">
+                                <mdb-btn color="grey" rounded type="button" class="z-depth-1a" @click="SignIn">Log in</mdb-btn>
+                            </div>
+                            </mdb-col>
+
                         </mdb-row>
-                        </div>
-                        <mdb-card-body class="mx-4 mt-4">
-                            <mdb-input label="Your email" v-model="form.email"/>
-                            <mdb-input label="Your password" type="password" containerClass="mb-0" v-model="form.password"/>
-                            <mdb-row class="d-flex align-items-center mb-4 mt-5">
-                                <mdb-col md="12" class="align-items-start">
-                                <div class="text-center">
-                                    <mdb-btn color="grey" rounded type="button" class="z-depth-1a" @click="SignIn">Log in</mdb-btn>
-                                </div>
-                                </mdb-col>
-                                
-                            </mdb-row>
-                        </mdb-card-body>
-                    </mdb-card>
-                </mdb-col>
-            </mdb-row>
-        </div>
-        
+                    </mdb-card-body>
+                </mdb-card>
+            </mdb-col>
+        </mdb-row>
     </section>
 </template>
 
@@ -57,13 +54,12 @@
 
         SignIn()
         {
-            
             this.$store.dispatch('user/login', this.form)
-            .then(response => {
-                console.log(response);
+            .then((response) => {
+                this.$router({name: 'app'});
             })
-            .catch(error => {
-                console.log(error);
+            .catch((error) => {
+                this.$router({name: 'login'});
             });
         },
 
@@ -79,11 +75,7 @@
     .form-gradient
     {
         padding: 50px 0px;
-        background-image: url('http://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20(11).jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 50%;
-        height: 100vh;
+
     }
     .form-gradient .font-small
     {
