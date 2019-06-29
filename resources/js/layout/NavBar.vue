@@ -1,34 +1,106 @@
 <template>
-    <mdb-navbar class="flexible-navbar white" light position="top" scrolling>
-      <mdb-navbar-brand href="https://mdbootstrap.com/docs/vue/" target="_blank">MDB</mdb-navbar-brand>
-      <mdb-navbar-toggler>
-        <mdb-navbar-nav left>
-          <mdb-nav-item to="/" waves-fixed active class="active">Home</mdb-nav-item>
-          <mdb-nav-item href="https://mdbootstrap.com/docs/vue/getting-started/quick-start/" waves-fixed>About MDB</mdb-nav-item>
-          <mdb-nav-item href="https://mdbootstrap.com/docs/vue/getting-started/download/" waves-fixed>Free download</mdb-nav-item>
-          <mdb-nav-item href="https://mdbootstrap.com/education/bootstrap/" waves-fixed>Free tutorials</mdb-nav-item>
-        </mdb-navbar-nav>
-        <mdb-navbar-nav right>
-          <mdb-nav-item href="#!" waves-fixed><mdb-icon fab class="text-black" icon="facebook-square"/></mdb-nav-item>
-          <mdb-nav-item href="#!" waves-fixed><mdb-icon fab icon="twitter"/></mdb-nav-item>
-          <mdb-nav-item href="https://github.com/mdbootstrap/bootstrap-material-design" waves-fixed class="border border-light rounded mr-1" target="_blank"><mdb-icon fab icon="github" class="mr-2"/>MDB GitHub </mdb-nav-item>
-          <mdb-nav-item href="https://mdbootstrap.com/products/vue-ui-kit/" waves-fixed class="border border-light rounded" target="_blank"><mdb-icon icon="gem" far class="mr-2"/>Go Pro </mdb-nav-item>
-        </mdb-navbar-nav>
-      </mdb-navbar-toggler>
-    </mdb-navbar>
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <!-- Topbar Search -->
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+            <form class="form-inline mr-auto w-100 navbar-search">
+                <div class="input-group">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+                </div>
+            </form>
+            </div>
+        </li>
+
+        <!-- Nav Item - Alerts -->
+        <notify :show="visibleNotify" @closeNotify="closeNotify" @toggle="toggleNotify"></notify>
+
+        <!-- Nav Item - Messages -->
+        <message :show="visibleMessage" @closeMessage="closeMessage" @toggle="toggleMessage"></message>
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <info :show="visibleInfo" @closeInfo="visbledInfo" @toggle="toggleInfo"></info>
+
+        </ul>
+
+    </nav>
 </template>
 <script>
-import { mdbNavbar, mdbNavbarBrand, mdbNavItem, mdbNavbarNav, mdbNavbarToggler, mdbIcon } from 'mdbvue';
+import Info from '../components/navbar/Info';
+import Notify from '../components/navbar/Notify';
+import Message from '../components/navbar/Message';
 export default {
     name: 'NavBar',
     components: {
-        mdbNavbar,
-        mdbNavbarBrand,
-        mdbNavItem,
-        mdbNavbarToggler,
-        mdbIcon,
-        mdbNavbarNav
-    }
+        Info,
+        Notify,
+        Message
+    },
+    data() {
+        return {
+            visibleInfo: false,
+            visibleNotify: false,
+            visibleMessage: false
+        }
+    },
+    methods: {
+        visbledInfo(data)
+        {
+            this.visibleInfo = data;
+        },
+        toggleInfo(data) {
+            this.visibleInfo = data;
+        },
+
+        closeMessage(data)
+        {
+            this.visibleMessage = data;
+        },
+        toggleMessage(data) {
+            this.visibleMessage = data;
+        },
+
+        closeNotify(data)
+        {
+            this.visibleNotify = data;
+        },
+        toggleNotify(data) {
+            this.visibleNotify = data;
+        }
+    },
+
+
 }
 </script>
 <style scoped>

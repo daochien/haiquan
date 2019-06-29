@@ -60,6 +60,56 @@ const actions = {
                 rejects(error);
             });
         });
+    },
+
+    getInfo(context)
+    {
+        return new Promise((resolve, reject) => {
+            getInfo()
+            .then((response) => {
+                if(response.status)
+                {
+
+                    const {id, email, name} = response.data;
+                    context.commit('SET_ID', id); // set id
+                    context.commit('SET_NAME', name); // set name
+                    context.commit('SET_EMAIL', email); //set email
+                    resolve(response.data);
+                }
+                else
+                {
+                    reject('getInfo: roles must be a non-null array!');
+                }
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    },
+
+    logout(context)
+    {
+        return new Promise((resolve, reject) => {
+            logout(state.token)
+            .then(() => {
+                context.commit('SET_TOKEN', '');
+                removeToken();
+                //resetRouter();
+                resolve();
+            })
+            .catch((error) => {
+                reject(error);
+            })
+        });
+    },
+
+    resetToken(context)
+    {
+        return new Promise(resolve => {
+            context.commit('SET_TOKEN', '');
+            removeToken();
+            resolve();
+        });
     }
 };
 

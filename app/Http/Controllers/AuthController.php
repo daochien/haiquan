@@ -20,14 +20,14 @@ class AuthController extends Controller
         {
             $v = Validator::make($request->all(), [
                 'email' => 'required|email|unique:users',
-                'password'  => 'required|min:3|confirmed',
+                'password'  => 'required|min:3',
                 'name' => 'required'
             ]);
 
             if ($v->fails())
             {
                 return response()->json([
-                    'status' => 'error',
+                    'status' => false,
                     'errors' => $v->errors()
                 ], 422);
             }
@@ -38,12 +38,12 @@ class AuthController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
 
-            return response()->json(['status' => 'success'], 200);
+            return response()->json(['status' => true, 'msg' => 'Đăng ký thành công'], 200);
         }
         catch(\Exception $e)
         {
             return response()->json([
-                'status' => 'error',
+                'status' => false,
                 'error' => $e->getMessage()
             ], 422);
         }
@@ -61,7 +61,7 @@ class AuthController extends Controller
         {
             $credentials = $request->only('email', 'password');
 
-            if ($token = $this->guard()->attempt($credentials)) 
+            if ($token = $this->guard()->attempt($credentials))
             {
                 return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
             }
@@ -102,7 +102,7 @@ class AuthController extends Controller
     {
         if ($token = $this->guard()->refresh()) {
             return response()
-                ->json(['status' => 'successs'], 200)
+                ->json(['status' => 'success'], 200)
                 ->header('Authorization', $token);
         }
         return response()->json(['error' => 'refresh_token_error'], 401);

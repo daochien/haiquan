@@ -1,16 +1,20 @@
-import Vue from 'vue/dist/vue.esm.js';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+import Vuelidate from 'vuelidate';
+import BootstrapVue from "bootstrap-vue"
+
+import 'startbootstrap-sb-admin-2/css/sb-admin-2.min.css';
+
+
+import router from './router/index.js';
 import store from './store/index';
 import { initialize } from './router/middleware/auth';
 
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbvue/build/css/mdb.css';
-
-import router from './router/index.js';
-
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(Vuelidate);
+Vue.use(BootstrapVue);
 
 initialize(store, router);
 

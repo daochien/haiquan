@@ -1,10 +1,10 @@
-import Vue from 'Vue';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import Login from '../components/auth/Login.vue';
-import SignUp from '../components/auth/SignUp.vue';
+import Login from '../page/auth/Login.vue';
+import SignUp from '../page/auth/Register.vue';
 import App from '../layout/App.vue';
 
 export const constantRoutes = [
@@ -14,7 +14,26 @@ export const constantRoutes = [
         component: App,
         meta: {
             requiresAuth: true
-        }
+        },
+        children: [
+            {
+                path: 'shipment',
+                component: () => import('../page/shipment/Index.vue'),
+                name: 'Shipment',
+                children: [
+                    {
+                        path: 'add',
+                        component: () => import('../page/shipment/Add.vue'),
+                        name: 'ShipmentAdd',
+                    },
+                    {
+                        path: 'manage',
+                        component: () => import('../page/shipment/Manage.vue'),
+                        name: 'ShipmentManage',
+                    },
+                ]
+            },
+        ],
     },
     {
         path: '/login',

@@ -1,5 +1,6 @@
 import request from '../utils/request';
 
+
 export function login(data)
 {
     //console.log(data);
@@ -12,14 +13,34 @@ export function login(data)
 
 export function getInfo() {
     return request({
-      url: '/auth/user',
-      method: 'get',
+        url: '/auth/user',
+        method: 'get',
     });
-  }
+}
 
-  export function logout() {
+export function logout() {
     return request({
-      url: '/auth/logout',
-      method: 'post',
+        url: '/auth/logout',
+        method: 'post',
     });
-  }
+}
+
+export function register(data)
+{
+    return new Promise((resolve, reject) => {
+        request({
+            url: '/auth/register',
+            method: 'post',
+            data: data
+        })
+        .then((response) => {
+            if(response.status)
+            {
+                resolve(response);
+            }
+        })
+        .catch((error) => {
+            reject(error)
+        })
+    })
+}
